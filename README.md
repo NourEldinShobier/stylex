@@ -1,14 +1,32 @@
-# stylex
+# StyleX
+A utility-first package that helps developers to style widgets like CSS variables. It also provides many utility functions e.g: padding, margin, shadow ..etc. The package is originally based on the same concept of `stylist` package but with extra features and some modifications.
 
-A new Flutter package project.
+### How does it work?
+First, you create `StyleX` instance. You can have multiple `StyleX` instances, and then inject them all into one big `StyleX`.
 
-## Getting Started
+```dart
+var cardStyle = StyleX({
+  "card-color": Color(0xFF129892),
+  "card-border-radius": BorderRadius.circular(16.0),
+  "card-border-color": "app-primary-color",
+});
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+var appStyle = StyleX({
+  "app-primary-color": Colors.blue.shade500,
+})..inject(cardStyle)
+```
+Then, you apply your style in your app root using `StyleStore`.
+```dart
+return StyleStore(
+  style: appStyle,
+  child: MaterialApp(...),
+);
+```
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+Now you can use your style by calling `StyleStore.of(context)`.
+```dart
+final style = StyleStore.of(context);
+
+// Automatically resolves the "app-primary-color" as a reference and gets the color.
+final cardBorderColor = style.get("card-border-color");
+```
