@@ -3,6 +3,8 @@ import 'dart:math';
 import 'package:flutter/widgets.dart';
 import 'package:stylex/stylex.dart';
 
+/// Utility functions for styling widgets faster & easier.
+
 EdgeInsetsGeometry padding({
   double all,
   double horizontal,

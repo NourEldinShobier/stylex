@@ -23,6 +23,7 @@ class StyleX implements IStyleX {
 
   Map<String, dynamic> clone() => Map.from(_data);
 
+  /// Extract a specfic class style from the style instance.
   Map<String, dynamic> filter(String key) {
     return Map<String, dynamic>.from(_data)
       ..removeWhere((k, v) => !k.startsWith(key));
@@ -38,6 +39,7 @@ class StyleX implements IStyleX {
 }
 
 class _StyleXHandler {
+  /// Handles hex color values and convert them to [Color] instances.
   static Map<String, dynamic> handleNewData({
     Map<String, dynamic> data,
   }) {
@@ -49,6 +51,7 @@ class _StyleXHandler {
   }
 
   static handleValue({StyleX style, dynamic value}) {
+    /// If the value is referencing another key.
     if (value is String)
       return style.get(value) ?? value;
     else if (value is dynamic Function(StyleX))
@@ -59,6 +62,7 @@ class _StyleXHandler {
 }
 
 class _ValueUtils {
+  /// Converts hex color values into [Color] instances
   static Color convertToColorFromString(dynamic value) {
     if (value is String && value.length == 7 && value.startsWith('#')) {
       final intValue = int.parse(value.substring(1), radix: 16);

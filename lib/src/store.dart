@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:stylex/stylex.dart';
 
+/// A mutable [Style] store class to update style dynamically at run-time.
 class InteritedStyleStore extends InheritedWidget {
   const InteritedStyleStore({Key key, this.state, Widget child})
       : super(key: key, child: child);
