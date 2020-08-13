@@ -1,8 +1,7 @@
 name: stylex
 description: A utility first package that helps developers to style widgets like CSS variables.
 version: 1.0.0
-author:
-homepage:
+homepage: https://github.com/NourEldinShobier/stylex
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
