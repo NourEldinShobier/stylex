@@ -1,4 +1,3 @@
-import 'dart:collection';
 import 'dart:ui';
 
 abstract class IStyleX {
