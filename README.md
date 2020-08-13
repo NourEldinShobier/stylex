@@ -2,7 +2,7 @@
 
 A utility-first package that helps Flutter developers to style widgets like CSS variables. It also provides many functions e.g: padding, margin, shadow ..etc. The package is inspired by `stylist` package but with extra features and some modifications.
 
-### How does it work?
+# How does it work? ⚙️
 
 1. Create your `StyleX` instance. You can have multiple `StyleX` instances, and then inject them all into one big `StyleX`.
 
@@ -47,7 +47,7 @@ context.style = style;
 StyleStore.update(context, style);
 ```
 
-### More Details
+# More Details 📓
 
 1. Use `clone` method to clone your style.
 
