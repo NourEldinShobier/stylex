@@ -1,21 +1,27 @@
 # StyleX
-A utility-first package that helps developers to style widgets like CSS variables. It also provides many utility functions e.g: padding, margin, shadow ..etc. The package is originally based on the same concept of `stylist` package but with extra features and some modifications.
+
+A utility-first package that helps Flutter developers to style widgets like CSS variables. It also provides many functions e.g: padding, margin, shadow ..etc. The package is inspired by `stylist` package but with extra features and some modifications.
 
 ### How does it work?
-First, you create `StyleX` instance. You can have multiple `StyleX` instances, and then inject them all into one big `StyleX`.
+
+1. Create your `StyleX` instance. You can have multiple `StyleX` instances, and then inject them all into one big `StyleX`.
 
 ```dart
-var cardStyle = StyleX({
-  "card-color": Color(0xFF129892),
-  "card-border-radius": BorderRadius.circular(16.0),
-  "card-border-color": "app-primary-color",
+final textFieldStyle = StyleX({
+  "text-field-background-color": '#00D68F',
+  "text-field-border-radius": borderRadius(all: 16),
+  "text-field-padding": padding(horizontal: 16, vertical: 8),
+  "text-field-border-color": "app-primary-color",
 });
 
-var appStyle = StyleX({
-  "app-primary-color": Colors.blue.shade500,
-})..inject(cardStyle)
+final appStyle = StyleX({
+  "app-primary-color": '#3366FF',
+})
+  ..inject(textFieldStyle);
 ```
-Then, you apply your style in your app root using `StyleStore`.
+
+2. Then, you apply your style in your app root using `StyleStore`.
+
 ```dart
 return StyleStore(
   style: appStyle,
@@ -23,10 +29,37 @@ return StyleStore(
 );
 ```
 
-Now you can use your style by calling `StyleStore.of(context)`.
+Now you need to consume your style like this:
+
 ```dart
+final style = context.style;
+// OR
 final style = StyleStore.of(context);
 
-// Automatically resolves the "app-primary-color" as a reference and gets the color.
-final cardBorderColor = style.get("card-border-color");
+final cardBorderColor = style.get<Color>("card-border-color");
+```
+
+To update your style:
+
+```dart
+context.style = style;
+// OR
+StyleStore.update(context, style);
+```
+
+### More Details
+
+1. Use `clone` method to clone your style.
+
+2. Use `filter` method to extract a specific style class:
+
+```dart
+final textFieldStyle = StyleX({
+  "text-field-background-color": '#00D68F',
+  "text-field-border-radius": borderRadius(all: 16),
+  "text-field-padding": padding(horizontal: 16, vertical: 8),
+  "text-field-border-color": "app-primary-color",
+});
+
+Map<String, dynamic> classStyle = textFieldStyle.filter('text-field');
 ```
