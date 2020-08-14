@@ -6,5 +6,7 @@ extension StyleContextExtension on BuildContext {
     return StyleStore.of(this);
   }
 
-  set(StyleX styleX) => StyleStore.update(this, style);
+  set style(StyleX style) {
+    StyleStore.update(this, style);
+  }
 }

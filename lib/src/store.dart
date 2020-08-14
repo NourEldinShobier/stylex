@@ -44,9 +44,7 @@ class _StyleStoreState extends State<StyleStore> {
     currentStyle = widget.style;
   }
 
-  void update(StyleX style) {
-    if (!identical(style, currentStyle)) setState(() => currentStyle = style);
-  }
+  void update(StyleX style) => setState(() => currentStyle = style);
 
   @override
   Widget build(BuildContext context) {

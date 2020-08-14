@@ -1,10 +1,15 @@
+# 1.1.0
+
+* Updated API.
+* Added example project.
+
 # 1.0.2
 
-* Add code documentation.
+* Added code documentation.
 
 # 1.0.1
 
-* Fix error in `StyleX` class.
+* Fixed error in `StyleX` class.
 
 # 1.0.0
 
